@@ -195,6 +195,18 @@ sudo python3 disable_unused_ifaces.py --dry-run
 # Jalankan benar-benar (disable interface yang tidak aktif)
 sudo python3 disable_unused_ifaces.py
 
+# Maka hasilnya kemungkinan akan seperti ini:
+Default interface (excluded): enp0s3
+Always excluded: enp0s3, lo
+
+Detected interfaces and status:
+- dummy0: up_flag=True, running=True, inet=192.0.2.1, no_carrier=False
+- enp0s3: up_flag=True, running=True, inet=10.0.2.15, no_carrier=False
+- lo: up_flag=True, running=True, inet=127.0.0.1, no_carrier=False
+
+✅ Tidak ada interface yang memenuhi kriteria untuk didisable.
+
+
 # Kalau kamu mau ngetes apakah fungsi “disable”-nya benar, kamu bisa buat 1 interface dummy tambahan lalu lihat apakah skrip otomatis menonaktifkannya.
 
 Misalnya:
@@ -208,7 +220,15 @@ sudo ifconfig testdummy 0.0.0.0
 sudo python3 disable_unused_ifaces.py
 
 
-#Maka hasilnya kemungkinan akan seperti ini:
+# Maka hasilnya kemungkinan akan seperti ini:
+Default interface (excluded): enp0s3
+Always excluded: enp0s3, lo
+
+Detected interfaces and status:
+- dummy0: up_flag=True, running=True, inet=192.0.2.1, no_carrier=False
+- enp0s3: up_flag=True, running=True, inet=10.0.2.15, no_carrier=False
+- lo: up_flag=True, running=True, inet=127.0.0.1, no_carrier=False
+- testdummy: up_flag=True, running=True, inet=None, no_carrier=False
 
 Interfaces yang akan didisable:
  - testdummy
